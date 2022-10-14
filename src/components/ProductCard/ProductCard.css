@@ -1,65 +1,59 @@
 .card.card-vertical {
-    width: 16rem;
+  width: 16rem;
 }
 
 .card-image-container {
-    width: 100%;
-    height: 15rem;
+  width: 100%;
+  height: 15rem;
 }
 
 .card-image {
-    height: 100%;
-    object-fit: contain;
+  height: 100%;
+  object-fit: contain;
 }
 
 .card-price {
-    gap: 4px;
+  gap: 4px;
 }
 
-.new-price{
-    font-size: 1.25rem;
+.new-price {
+  font-size: 1.25rem;
 }
 
 .price-strike-through,
 .discount {
-    font-size: .875rem;
+  font-size: 0.875rem;
 }
 
 .card-price .discount {
-    color: var(--primary-color-hover);
+  color: var(--primary-color-hover);
 }
 
 .star {
-    color: #f97316;
+  color: #f97316;
 }
 
-.card-horizontal .quantity-container
-{
-    margin: 0;
+.card-horizontal .quantity-container {
+  margin: 0;
 }
 
-@media only screen and (max-width: 700px)
-{
-    #myCard
-    {
-        flex-direction: column;
-        height: fit-content;
-        width: 100vw;
-        align-items: center;
-    }
+@media only screen and (max-width: 700px) {
+  #myCard {
+    flex-direction: column;
+    height: fit-content;
+    width: 100vw;
+    align-items: center;
+  }
 
-    .card-hori-image-container
-    {
-        margin-top: 10px;
-    }
+  .card-hori-image-container {
+    margin-top: 10px;
+  }
 
-    .quantity-container
-    {
-        justify-content: center;
-    }
+  .quantity-container {
+    justify-content: center;
+  }
 
-    .cta-btn.d-flex.gap
-    {
-        justify-content: center;
-    }
+  .cta-btn.d-flex.gap {
+    justify-content: center;
+  }
 }

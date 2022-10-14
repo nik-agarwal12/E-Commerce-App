@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Home } from "./pages/Home/Home";
 import { Cart } from "./pages/Cart/Cart";
-import { Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import { Navbar } from "./components";
 
@@ -23,7 +23,7 @@ function App() {
       <Navbar mode={mode} handleMode={handleMode} />
       <Routes>
         <Route path="/" element={<Home mode={mode} />} />
-        <Route path="/cart" element={<Cart mode={mode}/>} />
+        <Route path="/cart" element={<Cart mode={mode} />} />
       </Routes>
     </>
   );

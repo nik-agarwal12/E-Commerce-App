@@ -2,22 +2,21 @@ import { createContext, useContext, useReducer } from "react";
 import { cartReducer } from "../reducer/cart-reducer";
 
 const initialValue = {
-    cart: [],
-}
+  cart: [],
+};
 
 const CartContext = createContext(initialValue);
 
-const CartProvider = ({children}) => {
+const CartProvider = ({ children }) => {
+  const [{ cart }, cartDispatch] = useReducer(cartReducer, initialValue);
 
-    const [{ cart }, cartDispatch] = useReducer(cartReducer, initialValue);
-
-    return (
-        <CartContext.Provider value={{ cart, cartDispatch }}>
-            {children}
-        </CartContext.Provider>
-    )   
-}
+  return (
+    <CartContext.Provider value={{ cart, cartDispatch }}>
+      {children}
+    </CartContext.Provider>
+  );
+};
 
 const useCart = () => useContext(CartContext);
 
-export { useCart, CartProvider }
+export { useCart, CartProvider };

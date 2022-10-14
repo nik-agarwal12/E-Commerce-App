@@ -67,7 +67,7 @@ export const ProductCard = (props) => {
           </p>
         </div>
 
-        <div class="d-grid gap-2">
+        <div className="d-grid gap-2">
           <button
             className={`btn btn-dark ${
               props.mode === "light" ? "" : "btn-outline-light"
