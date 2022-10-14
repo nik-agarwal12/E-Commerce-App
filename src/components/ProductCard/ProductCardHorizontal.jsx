@@ -1,56 +1,135 @@
-import { useCart } from "../../context/cart-context"
+import { useCart } from "../../context/cart-context";
 
+export const ProductCardHorizontal = ({ product }) => {
+  const { id, name, image, oldPrice, newPrice, discount, quantity } = product;
 
-export const ProductCardHorizontal = ({product}) => {
+  const { cartDispatch } = useCart();
 
-    const { id, name, image, oldPrice, newPrice, rating, discount, quantity } = product;
+  const handleDecrement = (id) => {
+    cartDispatch({
+      type: "DECREMENT",
+      payload: id,
+    });
+  };
 
-    const { cartDispatch } = useCart();
+  const handleIncrement = (id) => {
+    cartDispatch({
+      type: "INCREMENT",
+      payload: id,
+    });
+  };
 
-    const handleDecrement = (id) => {
-        cartDispatch({
-            type: "DECREMENT",
-            payload: id
-        })
-    }
+  return (
+    <div className="card-horizontal d-flex shadow my-2">
+      <div className="card-hori-image-container relative">
+        <img className="card-image" src={image} alt="Book" />
+      </div>
+      <div className="card-details d-flex direction-column">
+        <div className="card-title">{name}</div>
+        <div className="card-description">
+          <p className="card-price">
+            Rs. {newPrice}
+            <span className="price-strike-through padding-all-8">
+              Rs. {oldPrice}
+            </span>
+            <span className="discount padding-all-8">({discount}% OFF)</span>
+          </p>
+        </div>
+        <div className="quantity-container d-flex gap">
+          <p className="q-title">Quantity: </p>
+          <div className="count-container d-flex align-center gap">
+            <button
+              className="count"
+              onClick={() => handleDecrement(id)}
+              disabled={quantity === 1}
+            >
+              -
+            </button>
+            <span className="count-value">{quantity}</span>
+            <button className="count" onClick={() => handleIncrement(id)}>
+              +
+            </button>
+          </div>
+        </div>
+        <div className="cta-btn d-flex gap">
+          <div className="cta-btn">
+            <button className="button hori-btn btn-primary btn-icon d-flex align-center justify-center gap cursor btn-margin">
+              {" "}
+              Remove From Cart
+            </button>
+          </div>
+          <div className="cta-btn">
+            <button className="button hori-btn btn-outline-primary btn-icon d-flex align-center justify-center gap cursor btn-margin">
+              Move to ❤️
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    const handleIncrement = (id) => {
-        cartDispatch({
-            type: "INCREMENT",
-            payload: id
-        })
-    }
+    // <div className="card mb-3" style={{ maxWidth: "540px" }}>
+    //   <div className="row no-gutters">
+    //     <div className="col-md-4 card-hori-image-container">
+    //       <img src={image} className="card-img" alt="Book" />
+    //     </div>
+    //     <div className="col-md-8">
+    //       <div className="card-body">
+    //         {/* <h5 className="card-title">Card title</h5>
+    //         <p className="card-text">
+    //           This is a wider card with supporting text below as a natural
+    //           lead-in to additional content. This content is a little bit
+    //           longer.
+    //         </p>
+    //         <p className="card-text">
+    //           <small className="text-muted">Last updated 3 mins ago</small>
+    //         </p> */}
 
-    return (
-        <div class="card-horizontal d-flex shadow">
-            <div class="card-hori-image-container relative">
-                <img class="card-image" src={image} alt="shoes" />
-            </div>
-            <div class="card-details d-flex direction-column">
-                <div class="card-title">{name}</div>
-                <div class="card-description">
-                    <p class="card-price">Rs. {newPrice}<span class="price-strike-through padding-all-8">Rs. {oldPrice}</span>
-                        <span class="discount padding-all-8">({discount}% OFF)</span>
-                    </p>
-                </div>
-                <div class="quantity-container d-flex gap">
-                    <p class="q-title">Quantity: </p>
-                    <div class="count-container d-flex align-center gap">
-                            <button class="count" onClick={() => handleDecrement(id)} disabled={quantity === 1}>-</button>
-                            <span class="count-value">{quantity}</span>
-                            <button class="count" onClick={() => handleIncrement(id)}>+</button>
-                    </div>
-                </div>
-                <div class="cta-btn d-flex gap">
-                    <div class="cta-btn">
-                        <button class="button hori-btn btn-primary btn-icon d-flex align-center justify-center gap cursor btn-margin"> Add To Cart</button>
-                    </div>
-                    <div class="cta-btn">
-                        <button class="button hori-btn btn-outline-primary btn-icon d-flex align-center justify-center gap cursor btn-margin">
-                        Move to ❤️</button>
-                        </div>
-                </div>
-            </div>
-</div>
-    )
-}
+    //         <div className="card-details d-flex direction-column">
+    //           <div className="card-title">{name}</div>
+    //           <div className="card-description">
+    //             <p className="card-price">
+    //               Rs. {newPrice}
+    //               <span className="price-strike-through padding-all-8">
+    //                 Rs. {oldPrice}
+    //               </span>
+    //               <span className="discount padding-all-8">
+    //                 ({discount}% OFF)
+    //               </span>
+    //             </p>
+    //           </div>
+    //           <div className="quantity-container d-flex gap">
+    //             <p className="q-title">Quantity: </p>
+    //             <div className="count-container d-flex align-center gap">
+    //               <button
+    //                 className="count"
+    //                 onClick={() => handleDecrement(id)}
+    //                 disabled={quantity === 1}
+    //               >
+    //                 -
+    //               </button>
+    //               <span className="count-value">{quantity}</span>
+    //               <button className="count" onClick={() => handleIncrement(id)}>
+    //                 +
+    //               </button>
+    //             </div>
+    //           </div>
+    //           <div className="cta-btn d-flex gap">
+    //             <div className="cta-btn">
+    //               <button className="button hori-btn btn-primary btn-icon d-flex align-center justify-center gap cursor btn-margin">
+    //                 {" "}
+    //                 Add To Cart
+    //               </button>
+    //             </div>
+    //             <div className="cta-btn">
+    //               <button className="button hori-btn btn-outline-primary btn-icon d-flex align-center justify-center gap cursor btn-margin">
+    //                 Move to ❤️
+    //               </button>
+    //             </div>
+    //           </div>
+    //         </div>
+    //       </div>
+    //     </div>
+    //   </div>
+    // </div>
+  );
+};

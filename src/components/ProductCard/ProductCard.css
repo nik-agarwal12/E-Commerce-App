@@ -32,3 +32,8 @@
 .star {
     color: #f97316;
 }
+
+.card-horizontal .quantity-container
+{
+    margin: 0;
+}

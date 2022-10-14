@@ -28,7 +28,7 @@ export const Home = () => {
     return (
         <Fragment>
             <Navbar />
-            <main className="main d-flex gap wrap">
+            <main className="container-md center my-5 d-flex gap wrap">
             {
                 products.map(product => <ProductCard key={product.id} product={product}/>)
             }
