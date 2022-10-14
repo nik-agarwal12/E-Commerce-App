@@ -37,3 +37,29 @@
 {
     margin: 0;
 }
+
+@media only screen and (max-width: 700px)
+{
+    #myCard
+    {
+        flex-direction: column;
+        height: fit-content;
+        width: 100vw;
+        align-items: center;
+    }
+
+    .card-hori-image-container
+    {
+        margin-top: 10px;
+    }
+
+    .quantity-container
+    {
+        justify-content: center;
+    }
+
+    .cta-btn.d-flex.gap
+    {
+        justify-content: center;
+    }
+}
