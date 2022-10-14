@@ -22,8 +22,8 @@ function App() {
     <>
       <Navbar mode={mode} handleMode={handleMode} />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route path="/" element={<Home mode={mode} />} />
+        <Route path="/cart" element={<Cart mode={mode}/>} />
       </Routes>
     </>
   );

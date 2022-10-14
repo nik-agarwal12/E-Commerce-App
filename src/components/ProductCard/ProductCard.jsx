@@ -3,8 +3,8 @@ import { useCart } from "../../context/cart-context";
 import { getProductById } from "../../utils/findProductInCart";
 import { useNavigate } from "react-router-dom";
 
-export const ProductCard = ({ product }) => {
-  const { id, name, image, oldPrice, newPrice, rating, discount } = product;
+export const ProductCard = (props) => {
+  const { id, name, image, oldPrice, newPrice, rating, discount } = props.product;
 
   const { cart, cartDispatch } = useCart();
 
@@ -15,7 +15,7 @@ export const ProductCard = ({ product }) => {
   const handleAddToCartClick = () => {
     cartDispatch({
       type: "ADD_TO_CART",
-      payload: product,
+      payload: props.product,
     });
   };
 
@@ -24,26 +24,26 @@ export const ProductCard = ({ product }) => {
   };
 
   return (
-    <div class="card card-vertical d-flex direction-column relative shadow">
-      <div class="card-image-container">
-        <img class="card-image" src={image} alt="shoes" />
+    <div className={`card card-vertical d-flex direction-column relative shadow bg-${props.mode}`}>
+      <div className="card-image-container">
+        <img className="card-image" src={image} alt="shoes" />
       </div>
-      <div class="card-details">
-        <div class="card-title">{name}</div>
-        <div class="card-description">
-          <p class="card-price d-flex align-end">
-            <span className="new-price">Rs. {newPrice}</span>
-            <span class="price-strike-through">Rs. {oldPrice}</span>
-            <span class="discount">({discount}% OFF)</span>
+      <div className="card-details">
+        <div className={`card-title text-${props.mode==="light" ? "dark" : "light"}`}>{name}</div>
+        <div className="card-description">
+          <p className="card-price d-flex align-end">
+            <span className={`new-price text-${props.mode==="light" ? "dark" : "light"}`}>Rs. {newPrice}</span>
+            <span className={`price-strike-through text-${props.mode==="light" ? "dark" : "light"}`}>Rs. {oldPrice}</span>
+            <span className="discount">({discount}% OFF)</span>
           </p>
-          <p className="d-flex align-center">
+          <p className={`d-flex align-center text-${props.mode==="light" ? "dark" : "light"}`}>
             <span className="star material-icons-outlined">star</span>
             {rating}
           </p>
         </div>
-        <div class="cta-btn">
+        <div className="cta-btn">
           <button
-            class="button btn-primary btn-icon cart-btn d-flex align-center justify-center gap cursor btn-margin"
+            className="button btn-primary btn-icon cart-btn d-flex align-center justify-center gap cursor btn-margin"
             onClick={
               isProductInCart ? handleGoToCartClick : handleAddToCartClick
             }

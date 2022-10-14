@@ -5,7 +5,7 @@ import axios from "axios";
 import "./Home.css";
 import { useCart } from "../../context/cart-context";
 
-export const Home = () => {
+export const Home = (props) => {
 
     const { cart } = useCart();
 
@@ -29,7 +29,7 @@ export const Home = () => {
         <Fragment>
             <main className="container-md center my-5 d-flex gap wrap">
             {
-                products.map(product => <ProductCard key={product.id} product={product}/>)
+                products.map(product => <ProductCard mode={props.mode} key={product.id} product={product}/>)
             }
             </main>
             
