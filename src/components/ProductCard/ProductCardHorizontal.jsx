@@ -19,6 +19,13 @@ export const ProductCardHorizontal = ({ product }) => {
     });
   };
 
+  const handleRemoveFromCartClick = (itemId) => {
+    cartDispatch({
+      type: "REMOVE_FROM_CART",
+      payload: itemId,
+    });
+  };
+
   return (
     <div className="card-horizontal d-flex shadow my-2" id="myCard">
       <div className="card-hori-image-container">
@@ -53,7 +60,7 @@ export const ProductCardHorizontal = ({ product }) => {
         </div>
         <div className="cta-btn d-flex gap">
           <div className="cta-btn">
-            <button className="button hori-btn btn-primary btn-icon d-flex align-center justify-center gap cursor btn-margin">
+            <button onClick={() => handleRemoveFromCartClick(id)} className="button hori-btn btn-primary btn-icon d-flex align-center justify-center gap cursor btn-margin">
               {" "}
               Remove From Cart
             </button>

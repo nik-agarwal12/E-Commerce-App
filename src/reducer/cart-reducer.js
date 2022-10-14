@@ -18,6 +18,12 @@ export const cartReducer = (state, { type, payload }) => {
                 cart: state.cart.map(product => product.id === payload ? { ...product, quantity: product.quantity + 1 } : product)
             }
 
+        case "REMOVE_FROM_CART":
+            return {
+                ...state,
+                cart: state.cart.filter(product => product.id !== payload),
+            }
+
         default:
             return state
     }
