@@ -9,7 +9,6 @@ export const Cart = () => {
 
   return (
     <Fragment>
-      <Navbar />
       <main className="container-fluid text-center my-4">
         {cart && cart.length > 0 ? (
           <h2>Your Cart: ({cart.length}) items</h2>

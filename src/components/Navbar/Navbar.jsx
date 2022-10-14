@@ -1,11 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export const Navbar = () => {
+export const Navbar = (props) => {
+
+  const handleMode = () => {
+    props.handleMode();
+  }
+
   return (
-    <nav className="navbar navbar-expand-lg" style={{backgroundColor: "#e3f2fd"}}>
+    <nav
+      className={`navbar navbar-expand-lg bg-${props.mode==="dark" ? "dark" : ""} text-${props.mode==="dark" ? "light" : "dark"}`}
+      style={{ backgroundColor: "#e3f2fd" }}
+    >
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
+        <Link className={`navbar-brand text-${props.mode==="dark" ? "light" : "dark"}`} to="/">
           BookTown
         </Link>
         <button
@@ -22,16 +30,29 @@ export const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/">
+              <Link className={`nav-link active text-${props.mode==="dark" ? "light" : "dark"}`} aria-current="page" to="/">
                 Home
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/cart">
+              <Link className={`nav-link text-${props.mode==="dark" ? "light" : "dark"}`} to="/cart">
                 Cart
               </Link>
             </li>
           </ul>
+        </div>
+
+        <div className="form-check form-switch">
+          <input
+            className="form-check-input"
+            type="checkbox"
+            role="switch"
+            id="flexSwitchCheckDefault"
+            onClick={handleMode}
+          />
+          <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
+            {props.mode === "dark" ? "Disable Dark Mode" : "Enable Dark Mode"}
+          </label>
         </div>
       </div>
     </nav>
